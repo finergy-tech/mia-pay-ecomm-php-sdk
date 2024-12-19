@@ -3,7 +3,7 @@
   "description": "PHP SDK for Mia POS ecommerce API",
   "type": "library",
   "license": "MIT",
-  "homepage": "https://gitlab.redriverapps.net/miapos/mia-pay-ecomm-php-sdk.git",
+  "homepage": "https://github.com/finergy-tech/mia-pay-ecomm-php-sdk.git",
   "keywords": ["mia-pos", "ecommerce", "payments", "api", "sdk", "php"],
   "authors": [
     {
