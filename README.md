@@ -1,93 +1,220 @@
-# mia-pay-ecomm-php-sdk
+# MIA POS PHP SDK
+MIA POS, provided by Finergy Tech, allows secure payment processing using QR codes and direct payment requests.
 
+This SDK allows merchants to integrate with the MIA POS ecommerce payment system. It simplifies the process of registering payments, retrieving payment statuses, and verifying signatures for callbacks. The SDK is designed to be lightweight and compatible with PHP applications.
 
+---
 
-## Getting started
+## Requirements
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+- PHP version: **>= 5.6**
+- PHP Extensions:
+    - `curl`
+    - `json`
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+Ensure that these extensions are enabled in your PHP configuration (`php.ini`).
 
-## Add your files
-
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
-
-```
-cd existing_repo
-git remote add origin https://gitlab.redriverapps.net/miapos/mia-pay-ecomm-php-sdk.git
-git branch -M main
-git push -uf origin main
-```
-
-## Integrate with your tools
-
-- [ ] [Set up project integrations](https://gitlab.redriverapps.net/miapos/mia-pay-ecomm-php-sdk/-/settings/integrations)
-
-## Collaborate with your team
-
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
-
-## Test and Deploy
-
-Use the built-in continuous integration in GitLab.
-
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
-
-***
-
-# Editing this README
-
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
-
-## Suggestions for a good README
-
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+---
 
 ## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+### Using Composer
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+1. Run the following command to add the SDK to your project:
+   ```bash
+   composer require finergy/mia-pos-sdk
+   ```
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+2. Include the Composer autoloader in your project:
+   ```php
+   require_once __DIR__ . '/vendor/autoload.php';
+   ```
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+### Manual Installation
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+1. Download or clone this repository.
+2. Add the `src` folder to your project directory.
+3. Include the SDK files manually:
+   ```php
+   require_once __DIR__ . '/path-to-sdk/src/MiaPosSdk.php';
+   require_once __DIR__ . '/path-to-sdk/src/Exceptions/ValidationException.php';
+   require_once __DIR__ . '/path-to-sdk/src/Exceptions/ClientApiException.php';
+   ```
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+---
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+## Getting Started
 
-## License
-For open source projects, say how it is licensed.
+### Obtaining API Credentials
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+To use the MIA POS ecommerce system, you must obtain the following credentials from the bank:
+
+- `baseUrl` (API Endpoint)
+- `merchantId` (Merchant Identifier)
+- `secretKey` (Authentication Key)
+
+All integrations must first be tested on the **test environment** provided by the bank.
+
+---
+
+## Usage Flow
+
+### 1. Registering a Payment
+
+When a client chooses to pay via MIA POS on your website, you must register the payment with the MIA POS system.
+
+- **Input**: Payment data (e.g., amount, currency, orderId).
+- **Output**: A `paymentId` and a `checkoutPage` URL for redirecting the client to confirm the payment.
+
+Example:
+
+```php
+require_once __DIR__ . '/src/MiaPosSdk.php';
+
+use Finergy\MiaPosSdk\MiaPosSdk;
+
+$baseUrl = 'https://ecomm-test.miapos.md/';
+$merchantId = 'your_merchant_id';
+$secretKey = 'your_secret_key';
+
+$sdk = MiaPosSdk::getInstance($baseUrl, $merchantId, $secretKey);
+
+$paymentData = [
+    'terminalId' => 'TE0001',
+    'orderId' => 'order12345',
+    'amount' => 150.75,
+    'currency' => 'MDL',
+    'language' => 'ro',
+    'payDescription' => 'Payment for order #12345',
+    'callbackUrl' => 'http://your_callback_url',
+    'successUrl' => 'http://your_success_url',
+    'failUrl' => 'http://your_fail_url',
+];
+
+$response = $sdk->createPayment($paymentData);
+
+$paymentId = $response['paymentId'];
+$checkoutPage = $response['checkoutPage'];
+
+// Save $paymentId in your database and redirect the client to $checkoutPage
+header("Location: $checkoutPage");
+```
+
+---
+
+
+### 2. Handling Payment Failure (failUrl)
+
+When the payment fails, the client will be redirected to the `failUrl` specified during payment registration. The request parameters will include the same data passed during the payment registration, such as the `orderId`.
+
+Use the `orderId` to retrieve the corresponding `paymentId` from your database, and then use the SDK to check the payment status. Based on the status, display the appropriate message to the client.
+
+Example:
+
+```php
+require_once __DIR__ . '/src/MiaPosSdk.php';
+
+use Finergy\MiaPosSdk\MiaPosSdk;
+
+$baseUrl = 'https://ecomm-test.miapos.md/';
+$merchantId = 'your_merchant_id';
+$secretKey = 'your_secret_key';
+
+$sdk = MiaPosSdk::getInstance($baseUrl, $merchantId, $secretKey);
+
+// Retrieve orderId from the request parameters
+$orderId = $_GET['orderId'];
+
+// Fetch paymentId from your database using orderId
+$paymentId = getPaymentIdFromDatabase($orderId);
+
+$response = $sdk->getPaymentStatus($paymentId);
+
+if ($response['status'] === 'FAILED') {
+    echo "Payment failed. Please try again.";
+} else {
+    echo "Payment successful!";
+    // Update order status in your database
+}
+```
+
+---
+
+### 3. Handling Payment Success (successUrl)
+
+When the payment succeeds, the client will be redirected to the `successUrl`. The request parameters will include the same data passed during the payment registration, such as the `orderId`.
+
+Use the `orderId` to retrieve the corresponding `paymentId` from your database, and then use the SDK to verify the payment status.
+
+Example:
+
+```php
+require_once __DIR__ . '/src/MiaPosSdk.php';
+
+use Finergy\MiaPosSdk\MiaPosSdk;
+
+$baseUrl = 'https://ecomm-test.miapos.md/';
+$merchantId = 'your_merchant_id';
+$secretKey = 'your_secret_key';
+
+$sdk = MiaPosSdk::getInstance($baseUrl, $merchantId, $secretKey);
+
+// Retrieve orderId from the request parameters
+$orderId = $_GET['orderId'];
+
+// Fetch paymentId from your database using orderId
+$paymentId = getPaymentIdFromDatabase($orderId);
+
+$response = $sdk->getPaymentStatus($paymentId);
+
+if ($response['status'] === 'SUCCESS') {
+    echo "Payment successful! Order ID: " . $response['orderId'];
+    // Update order status in your database
+} else {
+    echo "Payment could not be verified. Please contact support.";
+}
+```
+
+---
+
+### 4. Handling Callbacks (callbackUrl)
+
+After the payment is finalized, the MIA POS system will send a signed callback to the `callbackUrl`. Use the SDK to verify the signature and process the callback data.
+
+Example:
+
+```php
+require_once __DIR__ . '/src/MiaPosSdk.php';
+
+use Finergy\MiaPosSdk\MiaPosSdk;
+
+$baseUrl = 'https://ecomm-test.miapos.md/';
+$merchantId = 'your_merchant_id';
+$secretKey = 'your_secret_key';
+
+$sdk = MiaPosSdk::getInstance($baseUrl, $merchantId, $secretKey);
+
+// Retrieve callback data (replace with actual input)
+$inputJson = file_get_contents('php://input');
+$callbackData = json_decode($inputJson, true);
+
+$result = $callbackData['result'];
+$signature = $callbackData['signature'];
+
+$signString = $sdk->formSignStringByResult($result);
+$isValidSignature = $sdk->verifySignature($signString, $signature);
+
+if ($isValidSignature) {
+    echo "Callback verified successfully!";
+    // Update order status in your database based on $result['status']
+} else {
+    echo "Invalid callback signature!";
+}
+```
+
+---
+
+## Notes
+
+1. Always test your integration in the **test environment** before going live.
+2. Ensure secure storage of your API credentials (`merchantId`, `secretKey`) and do not expose them in client-side code.
